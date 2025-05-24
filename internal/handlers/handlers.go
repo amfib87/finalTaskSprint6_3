@@ -11,7 +11,7 @@ import (
 )
 
 func HandleRoot(res http.ResponseWriter, req *http.Request) {
-	abs, err := filepath.Abs("../finalTaskSprint6/index.html")
+	abs, err := filepath.Abs("../finalTaskSprint6_3/index.html")
 	if err != nil {
 		http.Error(res, "error read file", http.StatusInternalServerError)
 		return
@@ -19,8 +19,7 @@ func HandleRoot(res http.ResponseWriter, req *http.Request) {
 
 	data, err := os.ReadFile(abs)
 	if err != nil {
-		//http.Error(res, "error read file", http.StatusInternalServerError)
-		res.Header().Set("Content-Type", abs)
+		http.Error(res, "error read file", http.StatusInternalServerError)
 		return
 	}
 
